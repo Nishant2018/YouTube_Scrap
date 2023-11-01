@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .table-users {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 8px 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      text-align: center; /* Center align table headings */
+    }
+
+    .header {
+      background-color: #f2f2f2;
+      padding: 12px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    @media screen and (max-width: 600px) {
+      th,
+      td {
+        padding: 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="table-users">
+    <div class="header">reviews</div>
+    <table>
+      <tr>
+        <th>Video_url</th>
+        <th>Thumbnail_url</th>
+        <th>Title</th>
+        <th>View</th>
+        <th>Upload_date</th>
+      </tr>
+      {% for result in reviews %}
+      <tr>
+        <td>{{result['Video_url']}}</td>
+        <td>{{result['Thumbnail_url']}}</td>
+        <td>{{result['Title']}}</td>
+        <td>{{result['Views']}}</td>
+        <td>{{result['Upload_date']}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+
+</body>
+
+</html>
